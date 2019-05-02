@@ -19,11 +19,20 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card'; 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DemoMaterialModule } from './material';
+
+
+import { from } from 'rxjs';
+import { LoginComponent } from './component/login/login.component';
+import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
+import { ForgetpasswordComponent } from './component/forgetpassword/forgetpassword.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    AayuComponent
+    AayuComponent,
+    LoginComponent,
+    ResetpasswordComponent,
+    ForgetpasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -41,8 +50,8 @@ import { DemoMaterialModule } from './material';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DemoMaterialModule
-    
+    DemoMaterialModule,
+    ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

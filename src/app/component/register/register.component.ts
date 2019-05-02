@@ -19,10 +19,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
-        'name':new FormControl(this.user.name,[Validators.required]),
-        'email':new FormControl(this.user.emailId,Validators.required),
+        'userName':new FormControl(this.user.userName,[Validators.required]),
+        'emailId':new FormControl(this.user.emailId,Validators.required),
         'password':new FormControl(this.user.password,[Validators.required,Validators.minLength(6)]),
-        'mobileNumber':new FormControl(this.user.phNumber,[Validators.required])
+        'mobileNumber':new FormControl(this.user.mobileNumber,[Validators.required])
       }
     )
 
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     console.log("Registration");
     this.httpservice.postRequest("register",this.user).subscribe(
       (response:any) => {
-        if(response.statusCode === 1){
+        if(response.statusCode === 100){
           console.log(response);
           this.snackBar.open(
             "Registered Successfully",
