@@ -3,6 +3,7 @@ import { MatSnackBar } from '@angular/material';
 import { HttpService } from 'src/app/service/http-service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Login } from 'src/app/model/login';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { Login } from 'src/app/model/login';
 export class LoginComponent implements OnInit {
   login: Login = new Login();
    loginForm: FormGroup;
-  constructor(private snackBar: MatSnackBar,private httpservice:HttpService,public formBuilder: FormBuilder) { }
+   token:string;
+  constructor(private snackBar: MatSnackBar,private httpservice:HttpService,public formBuilder: FormBuilder,private router:Router) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group(
@@ -27,16 +29,21 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(){
+
     console.log("Login");
+    console.log(this.login.emailId)
+    this.token=localStorage.getItem('token');
     this.httpservice.postRequest("login",this.login).subscribe(
       (response:any) => {
         if(response.statusCode ===-100){
           console.log(response);
+          localStorage.setItem('token',response.token);
           this.snackBar.open(
             "Login Successfully",
             "undo",
             {duration:2500}
           )
+          this.router.navigate(['/dashboard']);
         }else{
           console.log(response);
           this.snackBar.open(

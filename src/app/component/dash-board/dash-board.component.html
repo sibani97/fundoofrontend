@@ -1,0 +1,163 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+    <div>
+  <!-- <mat-toolbar color="" class="example-toolbar" fxLayout="row" fxLayoutAlign="space-between start">
+    <button mat-icon-button (click)="snav.toggle()">
+    <mat-icon>menu</mat-icon></button>
+    <img src="../../../assets/keep-512.png" alt="Mountain" style="width: 5%;height: 78%;">
+    <h1 class="example-app-name">FundooApp</h1>
+
+    <div>
+    <mat-form-field  appearance="outline" class="search">
+        <mat-label>Search</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+
+
+    <div >
+        <button mat-icon-button class="buttonRefresh">
+          <mat-icon>refresh</mat-icon>
+
+        </button>
+      </div>
+
+     
+      <div>
+        <button mat-icon-button>
+          <mat-icon>settings_applications</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-icon-button>
+          <mat-icon>apps</mat-icon>
+        </button>
+      </div>
+
+      <div>
+        <button mat-icon-button >
+          <mat-icon>account_box</mat-icon>
+        </button>
+      </div>
+   
+
+
+
+  </mat-toolbar> -->
+     <mat-toolbar>
+
+      <mat-toolbar-row>
+
+        <div>
+          <button mat-icon-button fxFlex="110" fxLayout="row" fxLayoutAlign="center center" (click)="snav.toggle()">
+            <mat-icon matTooltip="Main menu">menu</mat-icon>
+          </button>
+        </div>
+
+        <div>
+          <img src="https://www.google.com/images/icons/product/keep-512.png" alt="FundooNotes Logo" fxFlex="180"
+            fxLayoutAlign="center center" style="width:40px;height:40px">
+        </div>
+
+        <div class="title" fxFlex="13" fxLayoutAlign="center center">
+          <h3>FundooNotes</h3>
+        </div>
+
+        <div fxFlex="55" fxLayout="row" fxLayoutAlign="center center">
+          <mat-form-field appearance="outline" fxHide.xs [style.fontSize.px]="2" class="search"
+            style="margin-left: 5%;width: 200%;">
+            <button mat-icon-button class="search-button">
+              <mat-icon matTooltip="Search">search</mat-icon>
+            </button>
+            <input fxFlex="90" matInput placeholder="Search" [style.fontSize.px]="16" class="search-window"
+              autocomplete="off" />
+          </mat-form-field>
+        </div>
+
+        <div fxFlex="5" class="settingbtn" fxLayoutAlign="center center">
+          <button mat-icon-button color="basic" (click)="refresh()" id="refresh" matTooltip="Refresh">
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </div>
+
+        <div fxFlex="5" fxLayoutAlign="center center">
+          <button mat-icon-button matTooltip="list view">
+            <mat-icon style="font-size:25px">list</mat-icon>
+            <!-- <mat-icon style="font-size:25px">grid_on</mat-icon> -->
+          </button>
+        </div>
+
+        <div fxFlex="5" fxLayoutAlign="center center">
+          <button mat-icon-button matTooltip="setting">
+            <mat-icon style="font-size:25px">settings</mat-icon>
+          </button>
+        </div>
+
+        <div fxFlex="5" fxLayoutAlign="center center">
+          <button mat-icon-button matTooltip="apps">
+            <mat-icon style="font-size:25px">apps</mat-icon>
+          </button>
+        </div>
+
+        <div fxFlex="5" fxLayoutAlign="center center">
+            <button mat-icon-button [matMenuTriggerFor]="accountmenu" matTooltip={{email}} >
+              <mat-icon style="font-size:25px">account_circle</mat-icon>
+            </button>
+          </div>
+        
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+  <div>
+      <mat-menu #accountmenu="matMenu">
+          <mat-card style="height: 100px;width: 245px;">
+            <div fxLayout="row">
+              <mat-icon>account_circle</mat-icon>
+            </div>
+            <p fxLayout="row" fxLayoutAlign="center center"> {{email}} </p>
+            <mat-divider></mat-divider>
+            <div fxLayout="row" fxLayoutAlign="space-around center">
+              <div>
+                <button routerLink="/register" routerLinkActive="active" fxLayoutAlign="start center" mat-raised-button>Add Account</button>
+              </div>
+              <div>
+                <button routerLink="/login" fxLayoutAlign="end center" mat-raised-button>Log Out</button>
+              </div>
+            </div>
+          </mat-card>
+        </mat-menu>
+    </div>
+  <mat-sidenav-container class="example-sidenav-container"
+                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+     
+      <mat-nav-list>
+          <div fxLayout="column" fxLayoutAlign="space-around start" >
+         
+          <button mat-button> <mat-icon>lightbulb_outline</mat-icon> Note </button>
+          <button mat-button><mat-icon>notifications_none</mat-icon>Remainder</button>
+          <button mat-button>Edit labels</button>
+          <button mat-button>Archive</button>
+          <button mat-button>Trash</button>
+      
+        <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
+      </div>
+      </mat-nav-list>
+
+     
+     
+      </mat-sidenav>
+
+     
+
+    <mat-sidenav-content>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</div>
+
+
+

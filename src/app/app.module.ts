@@ -5,9 +5,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './component/register/register.component';
-import { AayuComponent } from './component/aayu/aayu.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import{MatIconModule} from '@angular/material/icon';
@@ -25,14 +23,15 @@ import { from } from 'rxjs';
 import { LoginComponent } from './component/login/login.component';
 import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
 import { ForgetpasswordComponent } from './component/forgetpassword/forgetpassword.component';
+import { DashBoardComponent } from './component/dash-board/dash-board.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    AayuComponent,
     LoginComponent,
     ResetpasswordComponent,
-    ForgetpasswordComponent
+    ForgetpasswordComponent,
+    DashBoardComponent,
   ],
   imports: [
     BrowserModule,
