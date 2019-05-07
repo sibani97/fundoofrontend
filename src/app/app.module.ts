@@ -24,6 +24,7 @@ import { LoginComponent } from './component/login/login.component';
 import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
 import { ForgetpasswordComponent } from './component/forgetpassword/forgetpassword.component';
 import { DashBoardComponent } from './component/dash-board/dash-board.component';
+import { AddtonoteComponent } from './addtonote/addtonote.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,7 @@ import { DashBoardComponent } from './component/dash-board/dash-board.component'
     ResetpasswordComponent,
     ForgetpasswordComponent,
     DashBoardComponent,
+    AddtonoteComponent,
   ],
   imports: [
     BrowserModule,

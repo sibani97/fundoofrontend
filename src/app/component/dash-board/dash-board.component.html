@@ -123,7 +123,7 @@
                 <button routerLink="/register" routerLinkActive="active" fxLayoutAlign="start center" mat-raised-button>Add Account</button>
               </div>
               <div>
-                <button routerLink="/login" fxLayoutAlign="end center" mat-raised-button>Log Out</button>
+                <button (click)="onlogout()" fxLayoutAlign="end center" mat-raised-button>Log Out</button>
               </div>
             </div>
           </mat-card>
