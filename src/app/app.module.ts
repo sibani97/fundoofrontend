@@ -24,7 +24,12 @@ import { LoginComponent } from './component/login/login.component';
 import { ResetpasswordComponent } from './component/resetpassword/resetpassword.component';
 import { ForgetpasswordComponent } from './component/forgetpassword/forgetpassword.component';
 import { DashBoardComponent } from './component/dash-board/dash-board.component';
-import { AddtonoteComponent } from './addtonote/addtonote.component';
+import { AddtonoteComponent } from './component/addtonote/addtonote.component';
+import { NoteComponent } from './component/note/note.component';
+
+import { AppIconComponent } from './component/app-icon/app-icon.component';
+import { IspinComponent } from './component/ispin/ispin.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +39,12 @@ import { AddtonoteComponent } from './addtonote/addtonote.component';
     ForgetpasswordComponent,
     DashBoardComponent,
     AddtonoteComponent,
+    NoteComponent,
+   
+    AppIconComponent,
+   
+    IspinComponent,
+   
   ],
   imports: [
     BrowserModule,

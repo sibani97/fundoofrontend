@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="space-between start">
+  <button mat-icon-button>
+    <img src="../../../assets/download1.svg" matTooltip="Remind Me" mat-button style="height:20px;width:20px">
+  </button>
+
+  <button mat-icon-button>
+    <img src="../../../assets/download2.svg" matTooltip="Collaborator" mat-button style=" height:20px;width:20px">
+  </button>
+
+  <button mat-icon-button>
+    <img src="../../../assets/download3.svg" matTooltip="Change color" mat-button style=" height:20px;width:20px">
+  </button>
+
+  <button mat-icon-button>
+    <img src="../../../assets/download5.svg" matTooltip="Add image" mat-button style=" height:20px;width:20px">
+  </button>
+
+
+  <button mat-icon-button>
+    <img src="../../../assets/download6.svg" matTooltip="Archive" mat-button style="height:20px;width:20px">
+  </button>
+
+  <button mat-icon-button>
+      <img src="../../../assets/download8.svg" matTooltip="pin" mat-button style="height:20px;widows:20px;">
+    </button>
+
+  <button mat-icon-button>
+    <img src="../../../assets/download7.svg" matTooltip="More" mat-button [matMenuTriggerFor]="moreBtn"
+      style="height:20px;widows:20px;">
+  </button>
+
+  
+  <mat-menu #moreBtn="matMenu">
+    <div>
+      <div><button mat-button (click)=trash()>Delete Note</button></div>
+      <div><button mat-button>Add Lebel</button></div>
+      <div><button mat-button>Add Drawing</button></div>
+      <div><button mat-button>Restore</button></div>
+      <div><button mat-button>Pin</button></div>
+    </div>
+  </mat-menu>
+
+</div>

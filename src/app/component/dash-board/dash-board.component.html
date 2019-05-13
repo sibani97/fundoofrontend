@@ -129,8 +129,7 @@
           </mat-card>
         </mat-menu>
     </div>
-  <mat-sidenav-container class="example-sidenav-container"
-                         [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
      
@@ -141,7 +140,7 @@
           <button mat-button><mat-icon>notifications_none</mat-icon>Remainder</button>
           <button mat-button>Edit labels</button>
           <button mat-button>Archive</button>
-          <button mat-button>Trash</button>
+          <button mat-button><mat-icon>delete_outline</mat-icon>Trash</button>
       
         <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
       </div>
@@ -154,6 +153,8 @@
      
 
     <mat-sidenav-content>
+       <app-addtonote></app-addtonote>
+       <app-note></app-note>
     </mat-sidenav-content>
   </mat-sidenav-container>
 
