@@ -39,7 +39,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
     localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
-
+ 
 }
 
 

@@ -12,7 +12,8 @@ export class AppIconComponent implements OnInit {
   constructor(private noteService:NoteService,private snackbar:MatSnackBar) { }
 
   ngOnInit() {
-
+    // console.log('NOTEDATA ', this.noteData);
+    
 
   }
   trash()

@@ -10,6 +10,8 @@ export class IspinComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("isPin")
+    
   }
 
 }

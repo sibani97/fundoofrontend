@@ -9,6 +9,7 @@ import { AddtonoteComponent } from './component/addtonote/addtonote.component';
 import { NoteComponent } from './component/note/note.component';
 import { IspinComponent } from './component/ispin/ispin.component';
 import { AppIconComponent } from './component/app-icon/app-icon.component';
+import { DialogComponent } from './component/dialog/dialog.component';
 
 
 
@@ -17,16 +18,18 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forgetpassword', component: ForgetpasswordComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
-  { path: 'dashboard' , component: DashBoardComponent},
-  {path:'addtonote' ,component:AddtonoteComponent},
-  {path:'getnote',component:NoteComponent},
-  {path:'isPin',component:IspinComponent},
-  {path:'app-icon',component:AppIconComponent}
-
+  {path: 'dashboard', component: DashBoardComponent, 
+    children: [
+      { path: 'dialog', component: DialogComponent },
+      { path: 'addtonote', component: AddtonoteComponent },
+      { path: 'getnote', component: NoteComponent },
+      { path: 'isPin', component: IspinComponent },
+      { path: 'app-icon', component: AppIconComponent }
+    ],
+  }
 ]
-
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
+      imports: [RouterModule.forRoot(routes)],
+      exports: [RouterModule]
+    })
 export class AppRoutingModule { }

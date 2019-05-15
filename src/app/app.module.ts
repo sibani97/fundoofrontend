@@ -29,6 +29,8 @@ import { NoteComponent } from './component/note/note.component';
 
 import { AppIconComponent } from './component/app-icon/app-icon.component';
 import { IspinComponent } from './component/ispin/ispin.component';
+import { DialogComponent } from './component/dialog/dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { IspinComponent } from './component/ispin/ispin.component';
     AppIconComponent,
    
     IspinComponent,
+   
+    DialogComponent,
    
   ],
   imports: [
@@ -63,7 +67,8 @@ import { IspinComponent } from './component/ispin/ispin.component';
     FormsModule,
     ReactiveFormsModule,
     DemoMaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
     ],
   providers: [],
   bootstrap: [AppComponent]
