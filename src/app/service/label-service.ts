@@ -1,6 +1,7 @@
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 
 const httpOptions = {
     headers: new HttpHeaders().set('content-type', 'application/json')
@@ -12,10 +13,8 @@ const httpOptions = {
         providedIn: 'root'
     }
 )
-export class NoteService {
-    //   getRequest(arg0: string, note: any[]) {
-    //     throw new Error("Method not implemented.");
-    //   }
+export class LabelService {
+
     baseurl = environment.baseUrl;
     constructor(private http: HttpClient) {
 

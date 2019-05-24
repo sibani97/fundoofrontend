@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from 'src/app/service/http-service';
 import { Note } from 'src/app/model/note';
-import { MatSnackBar, MatDialog } from '@angular/material';
+import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material';
 import { NoteService } from 'src/app/service/note-service';
 import { DialogComponent } from '../dialog/dialog.component';
 
@@ -20,8 +20,8 @@ export class NoteComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log("get all note");
-    this.noteService.getRequest('note/getnote?trash=false&archive=false').subscribe
+    console.log("get all unpinned notes");
+    this.noteService.getRequest('note/getUnPin').subscribe
       ((response: any) => {
         this.note = response,
           console.log("#######", response)
@@ -36,7 +36,7 @@ export class NoteComponent implements OnInit {
         width: '350px',
         height: '300px',
         data: {
-          title: items.title, 
+          title: items.title,
           description: items.description,
           noteId: items.noteId
         }
@@ -44,7 +44,19 @@ export class NoteComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('dialog box closed');
-      
+
     })
+  }
+
+  isPin(items)
+  {
+    console.log("pin note");
+    this.noteService.putRequest("note/isPin?noteId=" + items.noteId, null).subscribe
+      ((response: any) => {
+        if (response.statusCode === 500)
+          this.snackBar.open("note pin", "undo", { duration: 2500 });
+
+      }
+      );
   }
 }

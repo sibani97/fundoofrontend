@@ -81,7 +81,7 @@
           </button>
         </div>
 
-        <div fxFlex="5" fxLayoutAlign="center center">
+        <div fxFlex="10" fxLayoutAlign="center center">
           <button mat-icon-button matTooltip="list view">
             <mat-icon style="font-size:25px">list</mat-icon>
             <!-- <mat-icon style="font-size:25px">grid_on</mat-icon> -->
@@ -131,17 +131,46 @@
     </div>
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
-                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+                 [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" style="width: 18%;">
      
       <mat-nav-list>
           <div fxLayout="column" fxLayoutAlign="space-around start" >
-         
-          <button mat-button> <mat-icon>lightbulb_outline</mat-icon> Note </button>
+
+         <div>
+            <!-- <span class="gb_lc">Reminders</span> -->
+          <button mat-button [routerLink] = "['note']"> <mat-icon>lightbulb_outline</mat-icon> Note </button>
+          </div>
+
+          <div>
           <button mat-button><mat-icon>notifications_none</mat-icon>Remainder</button>
-          <button mat-button><mat-icon>edit</mat-icon>Edit labels</button>
-          <button mat-button><mat-icon>archive</mat-icon>Archive</button>
-          <button mat-button><mat-icon>delete</mat-icon>Trash</button>
-      
+        </div>
+
+<div>
+ <h5>Labels</h5>
+ <div *ngFor="let items of allLabels"  fxLayout="row">
+   <button mat-button>
+<img src="../../../assets/download9.svg" style="height:20px ;widows:20px;">
+
+ </button>
+
+ </div>
+</div>
+
+
+
+
+
+
+
+          <div>
+          <button mat-button (click)="openDialoglabel()"><mat-icon>edit</mat-icon>Edit labels</button>
+        </div>
+          
+            <button mat-button [routerLink] = "['getArchive']"><mat-icon>archive</mat-icon>Archive</button>
+          
+          
+          <button mat-button [routerLink] = "['trashdata']"><mat-icon>delete</mat-icon>Trash</button>
+          <!-- <button mat-button ><mat-icon>edit</mat-icon>Edit labels</button> -->
         <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
       </div>
       </mat-nav-list>
@@ -153,8 +182,8 @@
      
 
     <mat-sidenav-content>
-       <app-addtonote></app-addtonote>
-       <app-note></app-note>
+      <router-outlet></router-outlet>
+        
     </mat-sidenav-content>
   </mat-sidenav-container>
 

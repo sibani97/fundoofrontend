@@ -1,4 +1,4 @@
-<div flex=10 fxLayoutAlign="center center" class="main" style="margin-top: 2%">
+<div flex=10 fxLayoutAlign="center center" class="main" style="margin-top: 2%" fxLayoutGap="10%">
 
   <div>
     <mat-card *ngIf="!popup" (click)=onPopup() class="popupCard">
@@ -32,31 +32,23 @@
 
   <div flex=100 fxLayoutAlign="center center" style="margin-top: 2%">
     <mat-card *ngIf="popup" fxLayoutAlign="start center" class="popdownCard">
-      <div flex=10 fxLayout="column" fxLayoutAlign="start start">
+      <div flex=10 fxLayout="column" fxLayoutAlign="start start" fxLayoutGap="10%">
 
         <div style="margin-top:-12px">
-          <input matInput type="text" placeholder="Title" [(ngModel)]="note.title"
+          <input matInput type="text" placeholder="Title"  (click)="openDialog(note)" [(ngModel)]="note.title"
             style="color: #202124;direction: ltr;font-family: 'Roboto',arial,sans-serif;font-size: 20px;" />
         </div>
-
 
         <div style="margin-top:15px">
           <input matInput type="text" placeholder="Take a note..." [(ngModel)]="note.description"
             style="color: #202124;direction: ltr;font-family: 'Roboto',arial,sans-serif;font-size: 15px;" />
         </div>
 
-       
-
-        <div fxLayout="row" fxLayoutAlign="space-between end">
-
-          <button mat-button>
-            <mat-icon matTooltip="Close the note"  (click)="onClose()">close</mat-icon>
-          </button>
-        </div>
-
-
         <div>
             <app-app-icon></app-app-icon>
+            <button mat-button>
+              <mat-icon matTooltip="Close the note"  (click)="onClose()">close</mat-icon>
+            </button>
         </div>
 
       </div>

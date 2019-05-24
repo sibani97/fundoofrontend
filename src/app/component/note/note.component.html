@@ -1,33 +1,50 @@
-<div style="margin: 20px" class="cardList" fxLayout="row wrap" fxLayoutAlign="start start" >
-  <div *ngFor="let items of note" fxLayoutAlign="start start" fxLayoutGap="100px" >
-    <mat-card class="popdownCard" fxLayout="column" >
-      <div fxLayout="column" fxLayoutAlign="center center">
-          <!-- <div fxLayout="row" fxLayoutAlign="space-around center" > -->
+<div class="main">
 
-        <div style="margin-top:-12px">
-         
-          <div  (click)="openDialog(items)" matInput type="text" placeholder="Title" >{{items.title}}</div>
-       
-        </div>
-
-
-        <div style="margin-top:15px">
-          <div matInput type="text" placeholder="Take a note..." > {{items.description}}</div>
-        </div>
-
-
-        <div fxLayout="row" fxLayoutAlign="space-between end">
-          <app-app-icon [noteData]="items"></app-app-icon>
-          <button matTooltip="Close the note" style="border-width: 0px;background: white;margin-top: 9px;margin:auto">
-
-            <img src="https://img.icons8.com/color/24/000000/cancel.png">
-          </button>
-        </div>
-
-
-
-
-      </div>
-    </mat-card>
+  <div fxLayoutAlign="start start" fxLayout="column" class="displayNotes">
+    <p>Pinned Notes</p>
+    <app-ispin></app-ispin>
   </div>
+
+  <div >
+    <p>Unpinned Notes</p>
+     <div class="cardList">
+      <div *ngFor="let items of note" >
+        <mat-card class="popdownCard">
+          <div>
+            <div class="unpin">
+              <button mat-icon-button (click)="isPin(items)">
+                <img src="../../../assets/download10.svg" matTooltip="pin" mat-button style="height:30px;widows:20px;">
+              </button>
+            </div>
+
+            <div style="margin-top:-12px">
+
+              <div (click)="openDialog(items)" matInput type="text" placeholder="Title">{{items.title}}</div>
+
+            </div>
+
+
+            <div style="margin-top:15px">
+              <div matInput type="text" placeholder="Take a note..."> {{items.description}}</div>
+            </div>
+
+            <div *ngFor="let label of items.label" >
+              {{label.labelName}}
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between end">
+              <app-app-icon [noteData]="items"></app-app-icon>
+              <button matTooltip="Close the note"
+                style="border-width: 0px;background: white;margin-top: 9px;margin:auto">
+                <!-- <img src="https://img.icons8.com/color/24/000000/cancel.png"> -->
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+
+
 </div>

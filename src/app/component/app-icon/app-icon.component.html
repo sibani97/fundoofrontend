@@ -16,36 +16,55 @@
   </button>
 
 
-  <button mat-icon-button>
+  <button mat-icon-button  (click)="archive()">
     <img src="../../../assets/download6.svg" matTooltip="Archive" mat-button style="height:20px;width:20px">
   </button>
 
-  <!-- <button mat-icon-button>
-    <img src="../../../assets/download9.svg" matTooltip="fcg" mat-button style="height:20px;width:20px">
-  </button> -->
+  
 
-
-  <div fxLayout="row" fxLayoutAlign="end start">
-  <button mat-icon-button>
-      <img src="../../../assets/download8.svg" matTooltip="pin" mat-button style="height:20px;widows:20px;">
-    </button>
-  </div>
 
   
+
+  <!-- <div *ngFor="let items of unpinned" class="cardcontaint" fxLayoutGap="20px">
+    <mat-card class="matCard" [ngStyle]="{'background-color': items.colorCode}">
+      <div fxLayout="row" fxLayoutAlign="end start" style="height: 30px;">
+        <button mat-icon-button (click)=isPin(items)>
+          <img src="../../../assets/download10.svg" matTooltip="Pin" mat-button style="height: 20px;width: 20px;">
+        </button>
+      </div> 
+
+
+       <div class="card">
+        <div class="title" (click)="openDialog(items)">{{ items.title }}</div>
+        <div class="description" (click)="openDialog(items)">{{ items.description }}</div>
+      </div> -->
+
+
+
+
+
   <button mat-icon-button>
     <img src="../../../assets/download7.svg" matTooltip="More" mat-button [matMenuTriggerFor]="moreBtn"
       style="height:20px;widows:20px;">
   </button>
 
   
+
   <mat-menu #moreBtn="matMenu">
     <div>
-      <div><button mat-button (click)=trash()>Delete Note</button></div>
+      <div><button mat-button (click)="trash()">Delete Note</button></div>
+
+
+      
       <div><button mat-button>Add Lebel</button></div>
+        
+
+
       <div><button mat-button>Add Drawing</button></div>
-      <div><button mat-button>Restore</button></div>
-      <div><button mat-button>Pin</button></div>
+      <div><button mat-button (click)="trash()">Restore</button></div>
+      
     </div>
+    
   </mat-menu>
 
 </div>

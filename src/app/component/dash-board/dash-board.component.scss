@@ -33,3 +33,15 @@
   .search{
     width: 632px;
   }
+
+
+gb_hc .gb_lc, .gb_ic {
+    padding-left: 32px;
+    display: inline-block;
+    line-height: 40px;
+    vertical-align: top;
+    width: 176px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

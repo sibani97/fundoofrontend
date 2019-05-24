@@ -1,0 +1,30 @@
+
+<div style="margin: 20px" class="cardList" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="30px">
+    <div *ngFor="let items of trashdata" fxLayoutAlign="start start" fxLayoutGap=20px>
+   
+      <mat-card class="popdownCard" fxLayout="column" >
+        <div fxLayout="column" fxLayoutAlign="center center">
+            <!-- <div fxLayout="row" fxLayoutAlign="space-around center" > -->
+  
+          <div style="margin-top:30px">
+           
+            <div  (click)="openDialog(items)" type="text" placeholder="Title" >{{items.title}}</div>
+         
+          </div>
+  
+  
+          <div style="margin-top:35px">
+            
+            <div matInput type="text" placeholder="Take a note..." > {{items.description}}</div>
+          </div>
+           
+       <div>
+          <app-app-icon [noteData]="items"></app-app-icon>
+  
+         </div>
+  
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  

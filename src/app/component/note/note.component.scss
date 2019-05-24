@@ -1,4 +1,36 @@
-.exampleCard{
-    width: 300px;
-    height: 100px;
+// .exampleCard{
+//     width: 300px;
+//     height: 100px;
+// }
+.popdownCard {
+    border-radius:10px;
+   
+   // padding: 35px;
+    width: fit-content;
+    height: fit-content;   
+}
+.unpin{
+    
+}
+//  p {
+//         text-align: center;
+//     }
+
+.main{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.displayNotes{
+    width : -webkit-fill-available;
+}
+
+
+.cardList
+{
+   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }

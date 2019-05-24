@@ -24,4 +24,6 @@ export class HttpService {
     public getRequest(url :any):any{
   return this.http.get(this.baseurl + url);
 } 
+
+
 }

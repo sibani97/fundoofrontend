@@ -1,0 +1,64 @@
+<!-- <div style="margin: 20px" class="cardList" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px">
+  <div *ngFor="let items of note" fxLayoutAlign="start start" fxLayoutGap="100px" >
+ 
+    <mat-card class="popdownCard" fxLayout="column" >
+      <div fxLayout="column" fxLayoutAlign="center center">
+         
+
+        <div style="margin-top:-30px">
+         
+          <div  (click)="openDialog(items)" type="text" placeholder="Title" >{{items.title}}</div>
+       
+        </div>
+
+
+        <div style="margin-top:25px">
+          <div matInput type="text" placeholder="Take a note..." > {{items.description}}</div>
+        </div>
+
+
+
+
+
+
+      </div>
+    </mat-card>
+  </div>
+</div> -->
+
+
+
+
+
+<!-- ----------------------------------------------------------- -->
+
+
+<div style="margin: 20px" class="cardList" fxLayout="row wrap" fxLayoutAlign="start start" fxLayoutGap="20px">
+  <div *ngFor="let items of note" fxLayoutAlign="start start" fxLayoutGap="100px" >
+    <mat-card class="popdownCard" fxLayout="column" >
+      <div fxLayout="column" fxLayoutAlign="center center">
+          <!-- <div fxLayout="row" fxLayoutAlign="space-around center" > -->
+
+        <div style="margin-top:-30px">
+         
+          <div  (click)="isPin()" matInput type="text" placeholder="Title" >{{items.title}}</div>
+       
+        </div>
+
+
+        <div style="margin-top:25px">
+          <div matInput type="text" placeholder="Take a note..." > {{items.description}}</div>
+        </div>
+
+
+        <div fxLayout="row" fxLayoutAlign="space-between end">
+          <app-app-icon [noteData]="items"></app-app-icon>
+          <button matTooltip="Close the note" style="border-width: 0px;background: white;margin-top: 10px;margin:auto">
+
+            <img src="https://img.icons8.com/color/24/000000/cancel.png">
+          </button>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

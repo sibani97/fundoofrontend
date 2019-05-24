@@ -31,6 +31,12 @@ import { AppIconComponent } from './component/app-icon/app-icon.component';
 import { IspinComponent } from './component/ispin/ispin.component';
 import { DialogComponent } from './component/dialog/dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { GetTrashComponent } from './component/get-trash/get-trash.component';
+import { TrashComponent } from './component/trash/trash.component';
+import { NoteparentComponent } from './component/noteparent/noteparent.component';
+import { UnArchiveComponent } from './component/un-archive/un-archive.component';
+import { LabelComponent } from './component/label/label.component';
+
 
 @NgModule({
   declarations: [
@@ -48,6 +54,18 @@ import {MatDialogModule} from '@angular/material/dialog';
     IspinComponent,
    
     DialogComponent,
+   
+    GetTrashComponent,
+   
+    TrashComponent,
+   
+    NoteparentComponent,
+   
+    UnArchiveComponent,
+   
+    LabelComponent,
+   
+   
    
   ],
   imports: [
