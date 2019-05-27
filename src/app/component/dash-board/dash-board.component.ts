@@ -37,7 +37,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
   }
   
   ngOnInit() {
-   
+   this.getallLabel();
   }
   onlogout(){
     localStorage.removeItem('token');

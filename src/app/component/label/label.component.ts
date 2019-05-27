@@ -48,8 +48,6 @@ export class LabelComponent implements OnInit {
 
   }
 
-  
-
 
   addLabel()
   {
@@ -74,7 +72,7 @@ export class LabelComponent implements OnInit {
     
   }
 
-  deleteLabelToNote(items)
+  deleteLabelToUser(items)
   {
     console.log("delete label");
 
@@ -83,11 +81,12 @@ export class LabelComponent implements OnInit {
       "labelId":items.labelId,
       "userId":items.userId
     };
+    //label/delete?labelId=59
     this.labelService.deleteRequest("label/delete?labelId="+items.labelId)
     
     .subscribe((response:any)=>
     {
-      if(response.statusCode===300){
+      if(response.statusCode===600){
         console.log(response);
         console.log("note id"+items.noteId);
         this.snackbar.open("label is deleted from note","undo",{duration:2500})
@@ -101,6 +100,8 @@ export class LabelComponent implements OnInit {
   
   
 }
+
+
 editLabel(items)
 {
   console.log(items);

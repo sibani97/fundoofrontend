@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NoteService } from 'src/app/service/note-service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
+import { LabelService } from 'src/app/service/label-service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-app-icon',
@@ -9,26 +11,33 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrls: ['./app-icon.component.scss']
 })
 export class AppIconComponent implements OnInit {
-
+  
+   allLabels:any[]; 
+  items:any;
+  labelOfNotes:any[];
   @Input() 
   noteData: any;
-
+  // allLabels:any;
   notes: any[];
   unpinned: any[];
   data: any[];
   untrash:any;
   unarchive:any;
-
-  constructor(private noteService: NoteService, private snackbar: MatSnackBar,public dialog: MatDialog) { }
+  labelName=new FormControl('');
+ 
+  constructor(private noteService: NoteService, private snackbar: MatSnackBar,public dialog: MatDialog,private labelService:LabelService) { }
 
   ngOnInit() {
     // console.log('NOTEDATA ', this.noteData);
     console.log('in app icon ts', this.noteData);
     this.getUnPinned();
     this.getUnArchive();
+    this.getallLabel();
     // this.getUnTrash();
 
   }
+
+  
 
   trash() {
     console.log("trash note");
@@ -102,6 +111,12 @@ export class AppIconComponent implements OnInit {
       );
     }
 
+
+    onEvent(event) {
+      event.stopPropagation();
+   }
+
+
    restore(items)
    {
   console.log("note restore");
@@ -121,6 +136,60 @@ export class AppIconComponent implements OnInit {
 
 }
 
+
+addLabelToNote(items)
+{
+  this.items={
+    " labelName":this.labelName.value
+  };
+  console.log("##########",items);
+  
+  console.log("add label to note",items.labelName);
+  console.log("note id",this.noteData.noteId);
+   //label/add/label/note?noteId=58&labelTitle=mango%20tree
+  this.labelService.postRequest("label/add/label/note?labelTitle="+items.labelName+ "&noteId="+this.noteData.noteId ,null).subscribe
+  ((respose:any)=>
+  {
+    if(respose.statusCode===100){
+      console.log(respose);
+      this.snackbar.open("label is added to note","undo",{duration:2500})
+    }
+    else{
+      console.log(respose);
+      this.snackbar.open("label is not added to note","undo",{duration:2500})
+    }
+
+  });
+}
+
+
+
+getallLabel()
+{
+  console.log("add label to note");
+  this.labelService.getRequest("label/getall/user/label").subscribe
+  ((response:any)=>{
+    this.allLabels=response;
+    console.log(this.allLabels);
+  })
+
+}
+
+deleteLabelToNote(items)
+{
+  console.log("Delete from note");
+  this.labelService.deleteRequest("label/delete/note/label?noteId="+this.noteData.noteId+"&labelId="+items.labelId).subscribe
+  ((response:any)=>{
+    if(response.statusCode===300){
+      console.log(response);
+      this.snackbar.open("label deleted from note successfully","undo",{duration:2500});
+    }
+    else{
+      console.log(response);
+      this.snackbar.open("label is not deleted from note","undo",{duration:2500});
+    }
+  })
+}
 
 
 

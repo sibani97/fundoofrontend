@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'forgetpassword', component: ForgetpasswordComponent },
   { path: 'resetpassword', component: ResetpasswordComponent },
   { path: 'isPin', component: IspinComponent },
-  
+ 
 
 
   {path: 'dashboard', component: DashBoardComponent, 

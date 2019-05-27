@@ -5,7 +5,6 @@
     <mat-icon>menu</mat-icon></button>
     <img src="../../../assets/keep-512.png" alt="Mountain" style="width: 5%;height: 78%;">
     <h1 class="example-app-name">FundooApp</h1>
-
     <div>
     <mat-form-field  appearance="outline" class="search">
         <mat-label>Search</mat-label>
@@ -13,37 +12,28 @@
         <mat-icon matSuffix>search</mat-icon>
       </mat-form-field>
     </div>
-
-
     <div >
         <button mat-icon-button class="buttonRefresh">
           <mat-icon>refresh</mat-icon>
-
         </button>
       </div>
-
      
       <div>
         <button mat-icon-button>
           <mat-icon>settings_applications</mat-icon>
         </button>
       </div>
-
       <div>
         <button mat-icon-button>
           <mat-icon>apps</mat-icon>
         </button>
       </div>
-
       <div>
         <button mat-icon-button >
           <mat-icon>account_box</mat-icon>
         </button>
       </div>
    
-
-
-
   </mat-toolbar> -->
      <mat-toolbar>
 
@@ -148,6 +138,7 @@
 <div>
  <h5>Labels</h5>
  <div *ngFor="let items of allLabels"  fxLayout="row">
+    <input type="text" matInput value="{{items.labelName}}" >
    <button mat-button>
 <img src="../../../assets/download9.svg" style="height:20px ;widows:20px;">
 
@@ -188,6 +179,4 @@
   </mat-sidenav-container>
 
 </div>
-
-
 

@@ -25,22 +25,7 @@
 
   
 
-  <!-- <div *ngFor="let items of unpinned" class="cardcontaint" fxLayoutGap="20px">
-    <mat-card class="matCard" [ngStyle]="{'background-color': items.colorCode}">
-      <div fxLayout="row" fxLayoutAlign="end start" style="height: 30px;">
-        <button mat-icon-button (click)=isPin(items)>
-          <img src="../../../assets/download10.svg" matTooltip="Pin" mat-button style="height: 20px;width: 20px;">
-        </button>
-      </div> 
-
-
-       <div class="card">
-        <div class="title" (click)="openDialog(items)">{{ items.title }}</div>
-        <div class="description" (click)="openDialog(items)">{{ items.description }}</div>
-      </div> -->
-
-
-
+  
 
 
   <button mat-icon-button>
@@ -48,23 +33,66 @@
       style="height:20px;widows:20px;">
   </button>
 
+
+<!-- <div>
+  <mat-chip-list #chipList>
+    <mat-chip *ngFor=let items of labelOfNotes>
+        {{items.labelName}}
+        <mat-icon (click)="deleteLabelToNote(items)">cancel</mat-icon>
+        </mat-chip>
+  </mat-chip-list>
+</div> -->
+
+
   
 
   <mat-menu #moreBtn="matMenu">
+      <div fxLayout="column">
     <div>
-      <div><button mat-button (click)="trash()">Delete Note</button></div>
-
-
+      <button mat-button (click)="trash()">Delete Note</button>
+         
+          
+      <button mat-button [matMenuTriggerFor]="label" (click)="onEvent($event)">Add Lebel</button>
+       
       
-      <div><button mat-button>Add Lebel</button></div>
-        
-
-
-      <div><button mat-button>Add Drawing</button></div>
-      <div><button mat-button (click)="trash()">Restore</button></div>
+      <button mat-button>Add Drawing</button>
+      <button mat-button (click)="trash()">Restore</button>
       
+    </div>
     </div>
     
   </mat-menu>
+
+
+
+
+
+
+  <div>
+      <mat-menu #label="matMenu">
+          <div fxLayout="column">
+            <div>Label Note</div>
+            <div *ngFor="let items of allLabels">
+             
+              <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
+                <mat-checkbox (click)="addLabelToNote(items)">
+                  
+                    <div [style.fontSize.px]=12>
+                       
+                      {{items.labelName}}
+                    </div>
+                  </mat-checkbox> 
+
+            </div>
+
+          </div>
+
+      </mat-menu>
+
+  </div>
+
+
+
+
 
 </div>
