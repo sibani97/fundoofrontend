@@ -3,6 +3,7 @@ import { NoteService } from 'src/app/service/note-service';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { Note } from 'src/app/model/note';
 import { DialogComponent } from '../dialog/dialog.component';
+import { LabelService } from 'src/app/service/label-service';
 
 @Component({
   selector: 'app-ispin',
@@ -12,7 +13,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 export class IspinComponent implements OnInit {
  note:any[];
   @Input() noteData: any;
-  constructor(private noteService:NoteService,private snackbar:MatSnackBar,
+  constructor(private labelService:LabelService,private snackBar: MatSnackBar,private noteService:NoteService,
     private dialog:MatDialog) { }
 
   ngOnInit() {
@@ -50,10 +51,30 @@ export class IspinComponent implements OnInit {
     this.noteService.putRequest("note/isPin?noteId=" + items.noteId, null).subscribe
       ((response: any) => {
         if (response.statusCode === 500)
-          this.snackbar.open("note pin", "undo", { duration: 2500 });
+          this.snackBar.open("note pin", "undo", { duration: 2500 });
 
       }
       );
   }
+
+
+deleteLabelToNote(items,label)
+{
+  console.log("Delete from note");
+  this.labelService.deleteRequest("label/delete/note/label?noteId="+ items.noteId+"&labelId="+label.labelId).subscribe
+  ((response:any)=>{
+    if(response.statusCode===300){
+      console.log(response);
+      this.snackBar.open("label deleted from note successfully","undo",{duration:2500});
+    }
+    else{
+      console.log(response);
+      this.snackBar.open("label is not deleted from note","undo",{duration:2500});
+    }
+  })
+}
+
+
+
 
 }

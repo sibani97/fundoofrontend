@@ -4,6 +4,7 @@ import { Note } from 'src/app/model/note';
 import { MatSnackBar, MatDialog, MatDialogRef } from '@angular/material';
 import { NoteService } from 'src/app/service/note-service';
 import { DialogComponent } from '../dialog/dialog.component';
+import { LabelService } from 'src/app/service/label-service';
 
 @Component({
   selector: 'app-note',
@@ -15,7 +16,8 @@ export class NoteComponent implements OnInit {
   data: any[];
   // noteService:NoteService=new NoteService();
 
-  constructor(private httpservice: HttpService, private snackBar: MatSnackBar, private noteService: NoteService, private dialog: MatDialog) { }
+  constructor( private labelService:LabelService,
+    private httpservice: HttpService, private snackBar: MatSnackBar, private noteService: NoteService, private dialog: MatDialog) { }
 
 
   ngOnInit() {
@@ -59,4 +61,21 @@ export class NoteComponent implements OnInit {
       }
       );
   }
+
+deleteLabelToNote(items,label)
+{
+  console.log("Delete from note");
+  this.labelService.deleteRequest("label/delete/note/label?noteId="+ items.noteId+"&labelId="+label.labelId).subscribe
+  ((response:any)=>{
+    if(response.statusCode===300){
+      console.log(response);
+      this.snackBar.open("label deleted from note successfully","undo",{duration:2500});
+    }
+    else{
+      console.log(response);
+      this.snackBar.open("label is not deleted from note","undo",{duration:2500});
+    }
+  })
+}
+
 }

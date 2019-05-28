@@ -18,8 +18,16 @@
                 <div matInput type="text" placeholder="Take a note..." > {{items.description}}</div>
               </div>
 
-              <div *ngFor="let label of items.label" >
+              <!-- <div *ngFor="let label of items.label" >
                   {{label.labelName}}
+              </div> -->
+              <div>
+                  <mat-chip-list #chipList>
+                      <mat-chip *ngFor="let label of items.label">
+                          {{label.labelName}}
+                          <mat-icon (click)="deleteLabelToNote(items,label)">cancel</mat-icon>
+                          </mat-chip>
+                    </mat-chip-list>
               </div>
       
               <div fxLayout="row" fxLayoutAlign="space-between end">

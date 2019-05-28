@@ -36,6 +36,7 @@ import { TrashComponent } from './component/trash/trash.component';
 import { NoteparentComponent } from './component/noteparent/noteparent.component';
 import { UnArchiveComponent } from './component/un-archive/un-archive.component';
 import { LabelComponent } from './component/label/label.component';
+import { ProfilePicComponent } from './component/profile-pic/profile-pic.component';
 
 
 @NgModule({
@@ -64,6 +65,8 @@ import { LabelComponent } from './component/label/label.component';
     UnArchiveComponent,
    
     LabelComponent,
+   
+    ProfilePicComponent,
    
    
    
