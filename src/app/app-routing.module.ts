@@ -16,6 +16,8 @@ import { NoteparentComponent } from './component/noteparent/noteparent.component
 import { RegisterComponent } from './component/register/register.component';
 import { UnArchiveComponent } from './component/un-archive/un-archive.component';
 import { LabelComponent } from './component/label/label.component';
+import { ProfilePicComponent } from './component/profile-pic/profile-pic.component';
+import { CollaboratorDialogComponent } from './component/collaborator-dialog/collaborator-dialog.component';
 
 
 
@@ -40,8 +42,9 @@ const routes: Routes = [
        {path:'trash',component:GetTrashComponent},
        {path:'trashdata',component:TrashComponent},
        {path:'unarchive',component:UnArchiveComponent},
-       {path:'label',component:LabelComponent}
-      // {path:'trash1',component:TrashComponent}
+       {path:'label',component:LabelComponent},
+       {path:'profilepic',component:ProfilePicComponent},
+      {path:'collaborator',component:CollaboratorDialogComponent}
     ],
   }
 ]

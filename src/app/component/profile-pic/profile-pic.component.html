@@ -1,3 +1,28 @@
-<p>
+<!-- <p>
   profile-pic works!
-</p>
+</p> -->
+<div fxLayout="column" fxLayoutGap="12px">
+  <div>
+    <h4>
+      SELECT PROFILE PICTURE
+    </h4>
+  </div>
+
+  <div>
+    <input type="file" (change)="fileChangedEvent($event)" />
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+      [resizeToWidth]="128" format="png" (imageCropped)="imageCropped($event)">
+    </image-cropper>
+    <img [src]="croppedImage" />
+  </div>
+
+  <div fxFlex="20%">
+    <button mat-raised-button color="primary" (click)="setImage($event)">
+      select-profile
+    </button>
+    <button mat-raised-button style="margin-left: 10%;" color="primary" (click)="close()">
+      Cancel
+    </button>
+  </div>
+
+</div>

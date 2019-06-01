@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
     providedIn: 'root'
     
@@ -24,6 +24,15 @@ export class HttpService {
     public getRequest(url :any):any{
   return this.http.get(this.baseurl + url);
 } 
+
+ public uploadImage(url:any,file:File)
+ {
+   const formdata:FormData=new FormData();
+formdata.append('file',file);
+return this.http.post(this.baseurl+url,formdata,
+  {headers:new HttpHeaders().set('token',localStorage.getItem('token'))});
+
+ }
 
 
 }

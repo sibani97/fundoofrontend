@@ -1,49 +1,48 @@
 <div fxLayout="column" fxLayoutAlign="start start">
-        <div>
-        <h4>Edit Labels</h4>
-        </div>
-        
-        <div>
-        <div fxLayout="row">
-        
-        <!-- <button mat-icon-button>
-        <img src="../../../assets/download13.svg" matTooltip="Cancel" style="height: 20px;width: 20px;">
-        </button>
-         -->
-        <input matInput type="text" placeholder="Create new label" [formControl]="labelName">
-        <div fxLayoutAlign="end end">
-        
-        </div>
-        </div>
-        </div>
-  
-  
-        
-         
-        <div *ngFor="let items of allLabels">
-                  
-        <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 252px;">
-  
-        <button mat-icon-button>
-        <mat-icon matTooltip="Delete" (click)=deleteLabelToUser(items) style="height: 20px;width: 20px;">delete</mat-icon>
-        </button>
-        <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
-      
-        <!-- <div fxLayoutAlign="end end">
-        <button mat-icon-button (click)=editLabel(items)>edit label</button>
+   <div>
+   <h4>Edit Labels</h4>
+   </div>
+   
+   <div>
+   <div fxLayout="row">
+   
+   <!-- <button mat-icon-button>
+   <img src="../../../assets/download13.svg" matTooltip="Cancel" style="height: 20px;width: 20px;">
+   </button>
+    -->
+   <input matInput type="text" placeholder="Create new label" [formControl]="labelName">
+   <div fxLayoutAlign="end end">
+   
+   </div>
+   </div>
+   </div>
+
+
+   
+    
+   <div *ngFor="let items of allLabels">
              
-        </div> -->
-  
-        <button mat-icon-button>
-        <mat-icon matTooltip="edit label" (click)=editLabel(items) style="height: 20px;width: 20px;">edit</mat-icon>
-     </button>
-  
-  
-        </div>
-        </div>
+   <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 252px;">
+
+   <button mat-icon-button>
+   <mat-icon matTooltip="Delete" (click)=deleteLabelToUser(items) style="height: 20px;width: 20px;">delete</mat-icon>
+   </button>
+   <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
+ 
+   <!-- <div fxLayoutAlign="end end">
+   <button mat-icon-button (click)=editLabel(items)>edit label</button>
         
-        <div>
-        <button mat-button (click)=addLabel()>Done</button>
-        </div>
-        </div>
-        
+   </div> -->
+
+   <button mat-icon-button>
+   <mat-icon matTooltip="edit label" (click)=editLabel(items) style="height: 20px;width: 20px;">edit</mat-icon>
+</button>
+
+
+   </div>
+   </div>
+   
+   <div>
+   <button mat-button (click)=addLabel()>Done</button>
+   </div>
+   </div>

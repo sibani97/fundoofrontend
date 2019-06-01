@@ -1,0 +1,48 @@
+<div fxLayout="column" fxLayoutGap="12px">
+  <div>
+    <h4>
+      Collaborators
+    </h4>
+  </div>
+
+  <div>
+<button button mat-icon-button (click)="addCollaboretor()">
+      
+<img src="../../../assets/download22.svg" matTooltip="Save" mat-button style="height:20px;width:20px">
+      
+  </button>
+  </div>
+  <div>
+    <button button mat-icon-button>
+    <img src="../../../assets/download23.svg" matTooltip="Delete" mat-button style="height:20px;width:20px">
+      
+       </button>
+  </div>
+
+  <div >
+    <div>  
+    <button button mat-icon-button>
+      <img src="../../../assets/download24.svg" style="height:20px;widows:20px;">
+      
+       </button>
+      </div>
+
+      <div>
+       <input type="text" matInput placeholder="Person or Email share with">
+       <!-- collaborateName -->
+       <input type="text" matInput value="{{items.collaborateName}}" [formControl]="collaborateName">
+       <mat-form-field appearance="outline" class="input-style">
+        </mat-form-field>
+      </div>
+      
+      
+  </div>
+  <div *ngFor="let items of allCollaboretos">
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 252px;">
+          <input type="text" matInput value="{{items.collaborateName}}" [formControl]="collaborateName">
+        </div>
+  </div>
+
+  
+
+</div>

@@ -38,7 +38,8 @@ import { UnArchiveComponent } from './component/un-archive/un-archive.component'
 import { LabelComponent } from './component/label/label.component';
 import { ProfilePicComponent } from './component/profile-pic/profile-pic.component';
 
-
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { CollaboratorDialogComponent } from './component/collaborator-dialog/collaborator-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,6 +69,8 @@ import { ProfilePicComponent } from './component/profile-pic/profile-pic.compone
    
     ProfilePicComponent,
    
+    CollaboratorDialogComponent,
+   
    
    
   ],
@@ -89,7 +92,8 @@ import { ProfilePicComponent } from './component/profile-pic/profile-pic.compone
     ReactiveFormsModule,
     DemoMaterialModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    ImageCropperModule
     ],
   providers: [],
   bootstrap: [AppComponent]

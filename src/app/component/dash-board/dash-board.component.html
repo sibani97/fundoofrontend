@@ -90,57 +90,64 @@
           </button>
         </div>
 
-        <div fxFlex="5" fxLayoutAlign="center center">
-            <button mat-icon-button [matMenuTriggerFor]="accountmenu" matTooltip={{email}} >
-              <mat-icon style="font-size:25px">account_circle</mat-icon>
-            </button>
-          </div>
+ <div fxFlex="5" fxLayoutAlign="center center">
+  <button mat-icon-button [matMenuTriggerFor]="accountmenu" matTooltip={{email}} >
+
+<img mat-card-avatar src="http://localhost:8080/user/getUploadpic/{{token}}"/>
+<!-- <mat-icon style="font-size:25px">account_circle</mat-icon> -->
+</button>
+</div>
         
-      </mat-toolbar-row>
+  </mat-toolbar-row>
     </mat-toolbar>
   </div>
 
+
   <div>
-      <mat-menu #accountmenu="matMenu">
-          <mat-card style="height: 100px;width: 245px;">
-            <div fxLayout="row">
-              <mat-icon>account_circle</mat-icon>
-            </div>
-            <p fxLayout="row" fxLayoutAlign="center center"> {{email}} </p>
-            <mat-divider></mat-divider>
-            <div fxLayout="row" fxLayoutAlign="space-around center">
-              <div>
-                <button routerLink="/register" routerLinkActive="active" fxLayoutAlign="start center" mat-raised-button>Add Account</button>
-              </div>
-              <div>
-                <button (click)="onlogout()" fxLayoutAlign="end center" mat-raised-button>Log Out</button>
-              </div>
-            </div>
-          </mat-card>
-        </mat-menu>
-    </div>
+ <mat-menu #accountmenu="matMenu">
+  <mat-card style="height: 100px;width: 245px;">
+  <div fxLayout="row">
+ 
+  <button (click)= "openProfileDialog()">
+  <img mat-card-avatar src="http://localhost:8080/user/getUploadpic/{{token}}"/>
+</button>
+
+  </div>
+  <p fxLayout="row" fxLayoutAlign="center center"> {{email}} </p>
+  <!-- <mat-divider></mat-divider> -->
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+  <div>
+  <button routerLink="/register" routerLinkActive="active" fxLayoutAlign="start center" mat-raised-button>Add Account</button>
+  </div>
+  <div>
+ <button (click)="onlogout()" fxLayoutAlign="end center" mat-raised-button>Log Out</button>
+  </div>
+  </div>
+  </mat-card>
+  </mat-menu>
+  </div>
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+  <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
                  [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" style="width: 18%;">
      
-      <mat-nav-list>
-          <div fxLayout="column" fxLayoutAlign="space-around start" >
+ <mat-nav-list>
+ <div fxLayout="column" fxLayoutAlign="space-around start" >
 
-         <div>
+  <div>
             <!-- <span class="gb_lc">Reminders</span> -->
-          <button mat-button [routerLink] = "['note']"> <mat-icon>lightbulb_outline</mat-icon> Note </button>
-          </div>
+  <button mat-button [routerLink] = "['note']"> <mat-icon>lightbulb_outline</mat-icon> Note </button>
+  </div>
 
-          <div>
-          <button mat-button><mat-icon>notifications_none</mat-icon>Remainder</button>
-        </div>
+  <div>
+  <button mat-button><mat-icon>notifications_none</mat-icon>Remainder</button>
+  </div>
 
 <div>
  <h5>Labels</h5>
  <div *ngFor="let items of allLabels"  fxLayout="row">
-    <input type="text" matInput value="{{items.labelName}}" >
-   <button mat-button>
-<img src="../../../assets/download9.svg" style="height:20px ;widows:20px;">
+<input type="text" matInput value="{{items.labelName}}" >
+<button mat-button>
+<img src="../../../assets/download9.svg" style="height:20px;widows:20px;">
 
  </button>
 
@@ -153,9 +160,9 @@
 
 
 
-          <div>
-          <button mat-button (click)="openDialoglabel()"><mat-icon>edit</mat-icon>Edit labels</button>
-        </div>
+  <div>
+  <button mat-button (click)="openDialoglabel()"><mat-icon>edit</mat-icon>Edit labels</button>
+ </div>
           
             <button mat-button [routerLink] = "['getArchive']"><mat-icon>archive</mat-icon>Archive</button>
           

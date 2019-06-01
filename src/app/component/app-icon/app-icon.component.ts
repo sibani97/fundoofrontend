@@ -4,6 +4,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.component';
 import { LabelService } from 'src/app/service/label-service';
 import { FormControl } from '@angular/forms';
+import { CollaboratorDialogComponent } from '../collaborator-dialog/collaborator-dialog.component';
 
 @Component({
   selector: 'app-app-icon',
@@ -189,6 +190,23 @@ deleteLabelToNote(items)
       this.snackbar.open("label is not deleted from note","undo",{duration:2500});
     }
   })
+}
+
+
+openDialoglabelCollaboretor(): void {
+  const dialogRef = this.dialog.open(CollaboratorDialogComponent,
+    {
+      width: '400px',
+      height: '350px',
+      
+    });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('dialog box closed');
+ 
+
+  })
+
 }
 
 

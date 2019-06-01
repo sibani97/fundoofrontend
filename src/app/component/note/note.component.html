@@ -28,9 +28,7 @@
               <div matInput type="text" placeholder="Take a note..."> {{items.description}}</div>
             </div>
 
-            <!-- <div *ngFor="let label of items.label" >
-              {{label.labelName}}
-            </div> -->
+            
             <div>
                 <mat-chip-list #chipList>
                     <mat-chip *ngFor="let label of items.label">
@@ -44,7 +42,7 @@
               <app-app-icon [noteData]="items"></app-app-icon>
               <button matTooltip="Close the note"
                 style="border-width: 0px;background: white;margin-top: 9px;margin:auto">
-                <!-- <img src="https://img.icons8.com/color/24/000000/cancel.png"> -->
+                
               </button>
             </div>
           </div>

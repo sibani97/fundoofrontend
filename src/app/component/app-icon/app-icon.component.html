@@ -3,7 +3,7 @@
     <img src="../../../assets/download1.svg" matTooltip="Remind Me" mat-button style="height:20px;width:20px">
   </button>
 
-  <button mat-icon-button>
+  <button mat-icon-button (click)="openDialoglabelCollaboretor()">
     <img src="../../../assets/download2.svg" matTooltip="Collaborator" mat-button style=" height:20px;width:20px">
   </button>
 
@@ -61,25 +61,25 @@
 
 
   <div>
-      <mat-menu #label="matMenu">
-          <div fxLayout="column">
-            <div>Label Note</div>
-            <div *ngFor="let items of allLabels">
+    <mat-menu #label="matMenu">
+    <div fxLayout="column">
+    <div>Label Note</div>
+    <div *ngFor="let items of allLabels">
              
-              <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
-                <mat-checkbox (click)="addLabelToNote(items)">
+    <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
+    <mat-checkbox (click)="addLabelToNote(items)">
                   
-                    <div [style.fontSize.px]=12>
+    <div [style.fontSize.px]=12>
                        
-                      {{items.labelName}}
-                    </div>
-                  </mat-checkbox> 
+    {{items.labelName}}
+    </div>
+   </mat-checkbox> 
 
-            </div>
+   </div>
 
-          </div>
+  </div>
 
-      </mat-menu>
+  </mat-menu>
 
   </div>
 

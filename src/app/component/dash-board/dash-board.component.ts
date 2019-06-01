@@ -3,8 +3,10 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { Login } from "./../../model/login";
 import { Router } from "@angular/router";
 import { LabelComponent } from '../label/label.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatSnackBar } from '@angular/material';
 import { LabelService } from 'src/app/service/label-service';
+import { ProfilePicComponent } from '../profile-pic/profile-pic.component';
+import { HttpService } from 'src/app/service/http-service';
 
 @Component({
   selector: 'app-dash-board',
@@ -24,7 +26,7 @@ export class DashBoardComponent implements OnInit, OnDestroy {
   items:any;
 
   constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private router:Router,private dialog:MatDialog
-   ,private labelService:LabelService ) {
+   ,private labelService:LabelService,private httpService:HttpService,private snackbar:MatSnackBar ) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -72,9 +74,46 @@ this.labelService.getRequest("label/getall/user/label").subscribe
 })
 }
 
+openProfileDialog()
+{
+  console.log("$$$$$$$$$");
 
+  const dialogRef=this.dialog.open(ProfilePicComponent,
+    {
+
+      // width: '400px',
+      // height: '350px',
+
+      width : 'auto',
+      height : 'auto'
+      
+    });
+    
+    dialogRef.afterClosed().subscribe(
+      image=>{
+        console.log('image',image.file);
+      
+      if(image!=null)
+      {
+        this.httpService.uploadImage("uploadProfilepic",image.file).subscribe
+        ((response:any)=>{
+          console.log("shibani profile########");
+          
+          if(response.statuscode===400){
+            console.log(response);
+            this.snackbar.open("profile pic uploaded successfully","close",{duration:2500});
+            
+          }
+          else{
+            console.log(response);
+            this.snackbar.open("profile pic is not uploaded successfully","close",{duration:2500});
+          }
+
+        })
+      }
+    });
  
- 
+  }
 
 
 }
