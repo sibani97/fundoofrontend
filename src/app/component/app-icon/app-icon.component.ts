@@ -16,8 +16,8 @@ export class AppIconComponent implements OnInit {
    allLabels:any[]; 
   items:any;
   labelOfNotes:any[];
-  @Input() 
-  noteData: any;
+  @Input() noteData: any;
+
   // allLabels:any;
   notes: any[];
   unpinned: any[];
@@ -29,6 +29,8 @@ export class AppIconComponent implements OnInit {
   constructor(private noteService: NoteService, private snackbar: MatSnackBar,public dialog: MatDialog,private labelService:LabelService) { }
 
   ngOnInit() {
+console.log("Collaborator"+this.noteData.noteId);
+    console.log("Note is got"+this.noteData)
     // console.log('NOTEDATA ', this.noteData);
     console.log('in app icon ts', this.noteData);
     this.getUnPinned();
@@ -37,7 +39,9 @@ export class AppIconComponent implements OnInit {
     // this.getUnTrash();
 
   }
-
+//   openDialoglabelCollaboretor(){
+// console.log("Data is got"+this.noteData.noteId)
+//   }
   
 
   trash() {
@@ -117,7 +121,9 @@ export class AppIconComponent implements OnInit {
       event.stopPropagation();
    }
 
-
+   openDialogCollaboretor(){
+     console.log("Collaborator is set")
+   }
    restore(items)
    {
   console.log("note restore");
@@ -193,12 +199,16 @@ deleteLabelToNote(items)
 }
 
 
-openDialoglabelCollaboretor(): void {
+openDialoglabelCollaboretor(items): void 
+{ console.log("*******"+items);
   const dialogRef = this.dialog.open(CollaboratorDialogComponent,
     {
       width: '400px',
       height: '350px',
-      
+      data:{
+        noteId:this.noteData.noteId
+        // noteId:this.items.noteId
+      }
     });
 
   dialogRef.afterClosed().subscribe(result => {

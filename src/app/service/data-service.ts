@@ -1,10 +1,23 @@
 import { BehaviorSubject } from 'rxjs';
 import { NoteService } from './note-service';
+import { Injectable } from '@angular/core';
+
+
+@Injectable({
+    providedIn: 'root'
+    
+})
 
 export class DataService {
-
+    
     private obtainNotes = new BehaviorSubject([]);
-    currentNotes = this.obtainNotes.asObservable();  
+    currentNotes = this.obtainNotes.asObservable(); 
+    private messageOrigin=new BehaviorSubject('default message'); 
+    recentMessage=this.messageOrigin.asObservable();
+
+
+
+
     constructor(private noteService:NoteService){
         this.getPinNotes();
         this.getUnpinNotes();
@@ -33,5 +46,12 @@ export class DataService {
         );
 
     }
+
+    changeMessage(message:any)
+    {
+        this.messageOrigin.next(message)
+
+    }
+
 
 }

@@ -3,8 +3,112 @@
     <h4>
       Collaborators
     </h4>
-  </div>
+  </div> 
+  <!-- //user 1st word -->
+ <!-- <div fxLayout="row" fxLayoutAlign="start end">
+ <button mat-mini-fab>{{userName | slice :0:1}}</button>
+ <div style="padding-left:10px">
+  <span style="font-weight:bold">{{userName}}</span>
+  <span>(owner)</span>
+  <span>{{emailId}}</span>
+</div>
+</div>  -->
 
+ <!-- iterate collabUser  -->
+ <!-- <div *ngFor="let items of allCollaboretos" style="padding-top:2%">
+<div style="padding-top:2%" fxLayout="row" fxLayoutAlign="start center">
+  <div style="width:620px">
+    <button mat-mini-fab>{{items.userName|slice:0:1}}</button>
+    <span style="padding-left: 20px"{{items.emailId}}></span>
+</div>  -->
+
+<!-- <div>
+  <button mat-icon-button>
+<img src="../../../assets/download23.svg" mat button-matToolTip="Delete" style="height: 20px;width: 20px;">
+</button>
+</div>
+</div> -->
+
+<!-- shareEmail -->
+
+<!-- <div style="padding-top:2%" fxLayout="row" fxLayoutAlign="start end">
+  <div style="padding-left:2%">
+  <mat-icon>person_add</mat-icon>
+</div>
+<div style="width: 550px;padding-left:5%;padding-bottom: 1%;">
+<input matInput placeholder="Person or email to share with" [formControl]=" shareEmail">
+</div> -->
+
+<!-- call addCollaboretor() -->
+
+<!-- <div>
+  <button mat-icon-button>
+    <mat-icon matTooltip="all Collaborators">done</mat-icon>
+
+  </button>
+  </div>
+  <div fxLayout="row">
+      <div>
+        <button mat-button>Cancel</button>
+        </div>
+  
+        <div>
+            <button mat-button>Save</button>
+            </div>
+    </div>
+</div>
+</div>
+</div>  -->
+
+<!-- <--------------------------------------------------------------- --> 
+<!-- ---------------------------------------------------------------------------- -->
+<!-- <div>
+    <button button mat-icon-button (click)="addCollaboretor()">
+          
+    <img src="../../../assets/download22.svg" matTooltip="Save" mat-button style="height:20px;width:20px">
+          
+      </button>
+      </div>
+      <div>
+        <button button mat-icon-button>
+        <img src="../../../assets/download23.svg" matTooltip="Delete" mat-button style="height:20px;width:20px">
+          
+           </button>
+      </div>
+    
+      <div >
+        <div>  
+        <button button mat-icon-button>
+          <img src="../../../assets/download24.svg" style="height:20px;widows:20px;">
+          
+           </button>
+          </div>
+    
+          <div>
+           <input type="text" matInput placeholder="Person or Email share with"> -->
+           <!-- collaborateName -->
+           <!-- <div *ngFor="let items of allCollaboretos">
+           <input type="text" matInput value="{{items.collaborateName}}" [formControl]="collaborateName">
+           <mat-form-field appearance="outline" class="input-style">
+            </mat-form-field>
+            
+          </div>
+          
+          
+      </div>
+      <div *ngFor="let items of allCollaboretos">
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 252px;">
+      <input type="text" matInput value="{{items.collaborateName}}" [formControl]="collaborateName">
+      </div>
+      </div>
+    
+      
+    
+    </div> -->
+    <!-- ---------------------------------------------------------------
+    ------------------------------------------------------------------ -->
+
+  
   <div>
 <button button mat-icon-button (click)="addCollaboretor()">
       
@@ -28,21 +132,24 @@
       </div>
 
       <div>
-       <input type="text" matInput placeholder="Person or Email share with">
+       <input type="text" matInput placeholder="Person or Email share with"[formControl]="collaborateName"> 
+
        <!-- collaborateName -->
+       <!-- <div *ngFor="let items of allCollaboretos">
        <input type="text" matInput value="{{items.collaborateName}}" [formControl]="collaborateName">
        <mat-form-field appearance="outline" class="input-style">
         </mat-form-field>
-      </div>
+      </div> -->
       
       
-  </div>
+  <!-- </div>
   <div *ngFor="let items of allCollaboretos">
-      <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 252px;">
-          <input type="text" matInput value="{{items.collaborateName}}" [formControl]="collaborateName">
-        </div>
+  <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 252px;">
+  <input type="text" matInput value="{{items.collaborateName}}" [formControl]="collaborateNam">
   </div>
+  </div>  -->
 
   
 
+</div>
 </div>
