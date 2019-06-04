@@ -23,7 +23,7 @@ export class CollaboratorDialogComponent implements OnInit {
   @Input() noteData: any;
   emailId:String;
   userName:String;
-  allCollaboretos: any[];
+  allCollaboretos: any;
   message:any;
   
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
@@ -75,7 +75,7 @@ export class CollaboratorDialogComponent implements OnInit {
     console.log("collaborator is added")
 
     const items={
-                          "ShareEmail":this.shareEmail.value
+    "ShareEmail":this.shareEmail.value
     };
 
     console.log("emailId collaborated to note");
@@ -102,10 +102,12 @@ export class CollaboratorDialogComponent implements OnInit {
   }
 
 
-  removeCollaborator()
-  {
-    console.log("collaborated note is deleted")
-    this.noteService.deleteRequest("note/deleteColaborator?noteId=" + this.data.noteId).subscribe
+  removeCollaborator(items){
+  // {console.log(items.emailId)
+    // console.log("collaborated note is deleted");
+    console.log(this.data.noteId)
+    console.log(items.emailId)
+    this.noteService.deleteRequest("note/deleteColaborator?noteId=" + this.data.noteId+"&emailId="+items.emailId).subscribe
     ((response:any)=>{
       if(response.statusCode===700){
         console.log(response)
@@ -113,11 +115,9 @@ export class CollaboratorDialogComponent implements OnInit {
       }
       else{
 console.log(response)
-this.snackbar.open("EmailId is not removed from collaborated list","undo",{duration:2500})
+this.snackbar.open("EmailId is not removed from collaborated******* list","undo",{duration:2500})
       }
-    })
-  }
-
+    });
 
 
 
@@ -145,3 +145,4 @@ this.snackbar.open("EmailId is not removed from collaborated list","undo",{durat
 
 
 
+}

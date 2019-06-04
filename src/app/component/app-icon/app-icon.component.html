@@ -61,15 +61,15 @@
 
 
   <div>
-    <mat-menu #label="matMenu">
-    <div fxLayout="column">
-    <div>Label Note</div>
-    <div *ngFor="let items of allLabels">
+  <mat-menu #label="matMenu">
+  <div fxLayout="column">
+  <div>Label Note</div>
+  <div *ngFor="let items of allLabels">
              
-    <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
-    <mat-checkbox (click)="addLabelToNote(items)">
+  <input type="text" matInput value="{{items.labelName}}" [formControl]="labelName">
+  <mat-checkbox (click)="addLabelToNote(items)">
                   
-    <div [style.fontSize.px]=12>
+  <div [style.fontSize.px]=12>
                        
     {{items.labelName}}
     </div>
