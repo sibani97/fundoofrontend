@@ -8,7 +8,7 @@
   </button>
 
   <button mat-icon-button>
-    <img src="../../../assets/download3.svg" matTooltip="Change color" mat-button style=" height:20px;width:20px">
+    <img src="../../../assets/download3.svg" matTooltip="Change color" mat-button [matMenuTriggerFor]="color" style=" height:20px;width:20px">
   </button>
 
   <button mat-icon-button>
@@ -34,6 +34,14 @@
         </mat-chip>
   </mat-chip-list>
 </div> -->
+
+<mat-menu #color="matMenu" [overlapTrigger]="false">
+<div fxLayout="row" fxLayoutGap="10px"  style="margin-top: 3px" *ngFor="let items of arrayOfColors">
+  <div *ngFor="let color of items">
+  <button mat-mini-fab >color.colorName</button>
+</div>
+</div>
+</mat-menu>
 
 
   
@@ -82,6 +90,11 @@
   </mat-menu>
 
   </div>
+
+
+
+
+
 
 
 
