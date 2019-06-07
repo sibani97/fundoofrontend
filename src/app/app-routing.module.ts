@@ -18,6 +18,7 @@ import { UnArchiveComponent } from './component/un-archive/un-archive.component'
 import { LabelComponent } from './component/label/label.component';
 import { ProfilePicComponent } from './component/profile-pic/profile-pic.component';
 import { CollaboratorDialogComponent } from './component/collaborator-dialog/collaborator-dialog.component';
+import { ReminderComponent } from './component/reminder/reminder.component';
 
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
        {path:'unarchive',component:UnArchiveComponent},
        {path:'label',component:LabelComponent},
        {path:'profilepic',component:ProfilePicComponent},
-      {path:'collaborator',component:CollaboratorDialogComponent}
+      {path:'collaborator',component:CollaboratorDialogComponent},
+      {path:'reminder',component:ReminderComponent}
     ],
   }
 ]

@@ -16,11 +16,20 @@ export class AppIconComponent implements OnInit {
   allLabels:any[]; 
   items:any;
   labelOfNotes:any[];
-  
+  color:any;
   @Input() noteData: any;
 
   // allLabels:any;
   notes: any[];
+
+  date = new FormControl(new Date());
+  serializedDate = new FormControl((new Date()).toISOString());
+  
+  remData:any;
+
+  
+  noteReminder:any;
+
   unpinned: any[];
   data: any[];
   untrash:any;
@@ -45,37 +54,37 @@ export class AppIconComponent implements OnInit {
     { colorName: "OrangeRed", colorCode: "#FF4500" },
     { colorName: "Tomato", colorCode: "#FF6347" },
     { colorName: "Yellow", colorCode: "#FFFF00" },
-    ],
-    [
-      { colorName: "Violet", colorCode: "#EE82EE" },
-      { colorName: "Fuchsia", colorCode: "#FF00FF" },
-      { colorName: "BlueViolet", colorCode: "#8A2BE2" },
-      { colorName: "DarkViolet", colorCode: "#9400D3" },
-      ],
-      [
-        { colorName: "Purple", colorCode: "#800080" },
-        { colorName: "MediumSlateBlue", colorCode: "#7B68EE" },
-        { colorName: "GreenYellow", colorCode: "#ADFF2F" },
-        { colorName: "Lime", colorCode: "#00FF00" },
-        ],
-        [
-          { colorName: "MediumSpringGreen", colorCode: "#00FA9A" },
-          { colorName: "MediumSlateBlue", colorCode: "#7B68EE" },
-          { colorName: "Olive", colorCode: "#808000" },
-          { colorName: "LightSeaGreen", colorCode: "#20B2AA" },
-          ],
-          [
-            { colorName: "Aqua", colorCode: "#00FFFF" },
-            { colorName: "DeepSkyBlue", colorCode: "#00BFFF" },
-            { colorName: "DodgerBlue", colorCode: "#1E90FF" },
-            { colorName: "CornflowerBlue", colorCode: "#6495ED" },
-            ] ,
-            [
-              { colorName: "Brown", colorCode: "#A52A2A" },
-              { colorName: "RosyBrown", colorCode: "#BC8F8F" },
-              { colorName: "DarkSlateGray", colorCode: "#2F4F4F" },
-              { colorName: "Khaki", colorCode: "#F0E68C" },
-              ]  
+    ]
+    // [
+    //   { colorName: "Violet", colorCode: "#EE82EE" },
+    //   { colorName: "Fuchsia", colorCode: "#FF00FF" },
+    //   { colorName: "BlueViolet", colorCode: "#8A2BE2" },
+    //   { colorName: "DarkViolet", colorCode: "#9400D3" },
+    //   ]
+      // [
+      //   { colorName: "Purple", colorCode: "#800080" },
+      //   { colorName: "MediumSlateBlue", colorCode: "#7B68EE" },
+      //   { colorName: "GreenYellow", colorCode: "#ADFF2F" },
+      //   { colorName: "Lime", colorCode: "#00FF00" },
+      //   ],
+      //   [
+      //     { colorName: "MediumSpringGreen", colorCode: "#00FA9A" },
+      //     { colorName: "MediumSlateBlue", colorCode: "#7B68EE" },
+      //     { colorName: "Olive", colorCode: "#808000" },
+      //     { colorName: "LightSeaGreen", colorCode: "#20B2AA" },
+      //     ],
+      //     [
+      //       { colorName: "Aqua", colorCode: "#00FFFF" },
+      //       { colorName: "DeepSkyBlue", colorCode: "#00BFFF" },
+      //       { colorName: "DodgerBlue", colorCode: "#1E90FF" },
+      //       { colorName: "CornflowerBlue", colorCode: "#6495ED" },
+      //       ] ,
+      //       [
+      //         { colorName: "Brown", colorCode: "#A52A2A" },
+      //         { colorName: "RosyBrown", colorCode: "#BC8F8F" },
+      //         { colorName: "DarkSlateGray", colorCode: "#2F4F4F" },
+      //         { colorName: "Khaki", colorCode: "#F0E68C" },
+      //         ]  
     ];
   constructor(private noteService: NoteService, private snackbar: MatSnackBar,public dialog: MatDialog,private labelService:LabelService) { }
 
@@ -88,6 +97,7 @@ console.log("Collaborator"+this.noteData.noteId);
     this.getUnArchive();
     this.getallLabel();
     console.log("Colors",this.arrayOfColors);
+    
     // this.getUnTrash();
 
   }
@@ -137,15 +147,7 @@ console.log("Collaborator"+this.noteData.noteId);
     }
 
 
-    // getUnTrash()
-    // {
-    //   this.noteService.getRequest('note/getUntrash').subscribe(
-    //     (response: any) => {
-    //       this.unpinned = response;
-          
-    //     }
-    //   )
-    // }
+   
 
     getUnArchive()
     {
@@ -270,13 +272,13 @@ openDialoglabelCollaboretor(items): void
 }
 
 
-addColourToNote(items)
+addColourToNote(colorName)
 {
   this.items={
 "addColor":this.addColour.value
  };
 console.log("colour ssuccessfully set")
-this.noteService.postRequest("/note/addColor?noteId="+this.noteData.noteId+"&colour"+items.addColor,null)
+this.noteService.postRequest("note/addColor?noteId="+this.noteData.noteId+"&colour="+colorName,null)
 .subscribe((response:any)=>{
 if(response.statusCode===200){
 console.log(response);
@@ -290,6 +292,107 @@ this.snackbar.open("colour is successfully added","undo",{duration:2500});
 });
 }
 
+
+
+reminder()
+{
+  console.log(this.reminder);
+  this.remData={
+    id: this.noteData.noteId,
+    time: this.remData
+  };
+
+}
+
+todayReminder()
+{
+  let currDate=new Date();
+  this.remData={
+    reminder: currDate.toISOString() 
+  }
+console.log(this.remData.reminder);
+this.noteService.putRequest("note/addReminder?noteId="+this.noteData.noteId+"&reminder"+this.remData.reminder,null).subscribe
+((response:any)=>{
+  if(response.statusCode===100)
+  {
+    console.log(response);
+    this.snackbar.open("reminder is added successfully","undo",{duration:2500});
+  }
+  else{
+    console.log(response)
+    this.snackbar.open("reminder is not added","undo",{duration:2500})
+  }
+
+});
+}
+
+ tomorrowReminder()
+ {
+  let currDate=new Date();
+  var nextDate=new Date(currDate);
+nextDate.setDate(currDate.getDate()+1);
+this.remData={
+  reminder:nextDate.toISOString()
+}
+console.log(this.remData.reminder)
+this.noteService.putRequest("note/addReminder?noteId="+this.noteData.noteId+"&reminder"+this.remData.reminder,null).subscribe
+((response:any)=>{
+  if(response.statusCode===100)
+  {
+    console.log(response)
+    this.snackbar.open("reminder is added","undo",{duration:2500})
+  }
+  else{
+    console.log(response)
+this.snackbar.open("reminder is not added","undo",{duration:2500})
+  }
+});
+ }
+
+ removeReminder()
+ {
+   console.log("remove reminder")
+   this.noteService.deleteRequest("note/removeReminder?noteId="+this.noteData.noteId).subscribe
+   ((response:any)=>{
+     if(response.statusCode===100)
+     {
+       console.log(response)
+       this.snackbar.open("reminder is removed from note","undo",{duration:2500})
+     }
+   })
+
+ }
+ nextWeek()
+ {
+ var day=new Date();
+ var days=7-day.getDay()+4;
+ var nextDay=new Date(day.setDate(day.getDate()+days));
+ this.remData={
+   reminder:nextDay.toISOString()
+ }
+ console.log("next week reminder")
+ this.noteService.putRequest("note/addReminder?noteId="+this.noteData.noteId+"&reminder"+this.remData.reminder,null).subscribe
+ ((response:any)=>{
+   if(response.statusCode===100)
+   {
+     console.log(response)
+     this.snackbar.open("next week reminder found","undo",{duration:2500})
+   }
+   else
+   {
+     console.log(response)
+     this.snackbar.open("next week reminder not found","undo",{duration:2500})
+   }
+ });
+  
+ }
+
+ getReminder()
+ {
+this.noteReminder=this.noteData.reminder;
+console.log("Reminder"+this.noteReminder);
+
+ }
 
 
 }

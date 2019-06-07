@@ -14,6 +14,27 @@ import { LabelService } from 'src/app/service/label-service';
 export class NoteComponent implements OnInit {
   note: any[];
   data: any[];
+  arrayOfColors= [
+    [
+    { colorName: "LightCoral", colorCode: "#F08080" },
+    { colorName: "Red", colorCode: "#FF0000" },
+    { colorName: "Crimson", colorCode: "#DC143C" },
+    { colorName: "FireBrick", colorCode: "#B22222" },
+    ],
+    [
+    { colorName: "HotPink", colorCode: "#FF69B4" },
+    { colorName: "DeepPink", colorCode: "#FF1493" },
+    { colorName: "PaleVioletRed", colorCode: "#DB7093" },
+    { colorName: "dark blue", colorCode: "#0000A0" },
+    ],
+    [
+    { colorName: "Coral", colorCode: "#FF7F50" },
+    { colorName: "OrangeRed", colorCode: "#FF4500" },
+    { colorName: "Tomato", colorCode: "#FF6347" },
+    { colorName: "Yellow", colorCode: "#FFFF00" },
+    ]
+    
+    ];
   // noteService:NoteService=new NoteService();
 
   constructor( private labelService:LabelService,

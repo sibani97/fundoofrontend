@@ -40,6 +40,7 @@ import { ProfilePicComponent } from './component/profile-pic/profile-pic.compone
 
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { CollaboratorDialogComponent } from './component/collaborator-dialog/collaborator-dialog.component';
+import { ReminderComponent } from './component/reminder/reminder.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,8 @@ import { CollaboratorDialogComponent } from './component/collaborator-dialog/col
     ProfilePicComponent,
    
     CollaboratorDialogComponent,
+   
+    ReminderComponent,
    
    
    

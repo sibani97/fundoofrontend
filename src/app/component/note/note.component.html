@@ -1,57 +1,67 @@
 <div class="main">
 
-  <div fxLayoutAlign="start start" fxLayout="column" class="displayNotes">
-    <p>Pinned Notes</p>
-    <app-ispin></app-ispin>
-  </div>
+    <div fxLayoutAlign="start start" fxLayout="column" class="displayNotes">
+      <p>Pinned Notes</p>
+      <app-ispin></app-ispin>
+    </div>
+  
+    <div >
+      <p>Unpinned Notes</p>
+      <div class="cardList">
+      
+        <div *ngFor="let items of note" >
+      <mat-card class="popdownCard"[ngStyle]="{'background-color':items.colour}">
 
-  <div >
-    <p>Unpinned Notes</p>
-     <div class="cardList">
-      <div *ngFor="let items of note" >
-        <mat-card class="popdownCard">
-          <div>
-            <div class="unpin">
-              <button mat-icon-button (click)="isPin(items)">
-                <img src="../../../assets/download10.svg" matTooltip="pin" mat-button style="height:30px;widows:20px;">
-              </button>
-            </div>
-
-            <div style="margin-top:-12px">
-
-              <div (click)="openDialog(items)" matInput type="text" placeholder="Title">{{items.title}}</div>
-
-            </div>
-
-
-            <div style="margin-top:15px">
-              <div matInput type="text" placeholder="Take a note..."> {{items.description}}</div>
-            </div>
-
+              <!-- [ngStyle]="{'background-color':color.colorCode}"  -->
             
-            <div>
-              <p>dddd</p>
-                <mat-chip-list #chipList>
-                    <mat-chip *ngFor="let label of items.label">
-                        {{label.labelName}}
-                        <mat-icon (click)="deleteLabelToNote(items,label)">cancel</mat-icon>
-                        </mat-chip>
-                  </mat-chip-list>
-            </div>
 
-            <div fxLayout="row" fxLayoutAlign="space-between end">
-              <app-app-icon [noteData]="items"></app-app-icon>
-              <button matTooltip="Close the note"
-                style="border-width: 0px;background: white;margin-top: 9px;margin:auto">
+              <div>
+
+              <div class="unpin">
+                <button mat-icon-button (click)="isPin(items)">
+                <img src="../../../assets/download10.svg" matTooltip="pin" mat-button style="height:30px;widows:20px;">
+                </button>
+              </div>
+  
+              <div style="margin-top:-12px">
+  
+                <div (click)="openDialog(items)" matInput type="text" placeholder="Title">{{items.title}}</div>
+  
+              </div>
+  
+  
+              <div style="margin-top:15px">
+                <div matInput type="text" placeholder="Take a note..."> {{items.description}}</div>
+              </div>
+  
+              
+              <div>
+
                 
-              </button>
+
+              <mat-chip-list #chipList>
+              <mat-chip *ngFor="let label of items.label">
+               {{label.labelName}}
+
+                 <mat-icon (click)="deleteLabelToNote(items,label)">cancel</mat-icon>
+                </mat-chip>
+                </mat-chip-list>
+              </div>
+  
+              <div fxLayout="row" fxLayoutAlign="space-between end">
+                <app-app-icon [noteData]="items"></app-app-icon>
+                <!-- <button matTooltip="Close the note"
+                  style="border-width: 0px;background: white;margin-top: 9px;margin:auto">
+                  
+                </button> -->
+              </div>
             </div>
-          </div>
-        </mat-card>
+          </mat-card>
+        </div>
       </div>
     </div>
+  
+  
+  
   </div>
-
-
-
-</div>
+  

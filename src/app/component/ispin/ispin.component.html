@@ -1,10 +1,12 @@
 
      
        <div style="margin: 20px" class="cardList" >
-        <div *ngFor="let items of note" class="pin" >
-          <mat-card class="popdownCard" >
+        <div *ngFor="let items of note" class="pin">
+
+          <mat-card class="popdownCard"[ngStyle]="{'background-color':items.colour}">
+              
             <div fxLayout = "column" fxLayoutAlign="start start">
-                <!-- <div fxLayout="row" fxLayoutAlign="space-around center" > -->
+                
       
               <div fxLayout = "row" fxLayoutAlign="space-between start" class = "title">
                 <div  matInput type="text"(click)=" openDialog(items)" placeholder="Title" >{{items.title}}</div>
@@ -29,14 +31,16 @@
                           </mat-chip>
                     </mat-chip-list>
               </div>
+
+              
       
               <div fxLayout="row" fxLayoutAlign="space-between end">
                 <app-app-icon [noteData]="items"></app-app-icon>
                 
-                <button matTooltip="Close the note" style="border-width: 0px;background: white;margin-top: 10px;margin:auto">
+                <!-- <button matTooltip="Close the note" style="border-width: 0px;background: white;margin-top: 10px;margin:auto">
       
-                  <!-- <img src="https://img.icons8.com/color/24/000000/cancel.png"> -->
-                </button>
+                 
+                </button> -->
               </div>
             </div>
           </mat-card>

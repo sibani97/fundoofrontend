@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="space-between start">
   <button mat-icon-button>
-    <img src="../../../assets/download1.svg" matTooltip="Remind Me" mat-button style="height:20px;width:20px">
+    <img src="../../../assets/download1.svg" matTooltip="Remind Me" mat-button  [matMenuTriggerFor]="reminder" style="height:20px;width:40px">
   </button>
 
   <button mat-icon-button (click)="openDialoglabelCollaboretor()">
@@ -8,7 +8,7 @@
   </button>
 
   <button mat-icon-button>
-    <img src="../../../assets/download3.svg" matTooltip="Change color" mat-button [matMenuTriggerFor]="color" style=" height:20px;width:20px">
+    <img src="../../../assets/download3.svg" matTooltip="color" mat-button [matMenuTriggerFor]="color" style=" height:20px;width:20px">
   </button>
 
   <button mat-icon-button>
@@ -38,13 +38,79 @@
 <mat-menu #color="matMenu" [overlapTrigger]="false">
 <div fxLayout="row" fxLayoutGap="10px"  style="margin-top: 3px" *ngFor="let items of arrayOfColors">
   <div *ngFor="let color of items">
-  <button mat-mini-fab >color.colorName</button>
+    <button [ngStyle]="{'background-color':color.colorCode}" (click)="addColourToNote(color.colorName)"
+    matTooltip="{{color.colorName}}" mat-mini-fab></button>
+  
 </div>
 </div>
 </mat-menu>
 
 
-  
+
+<!-- <mat-menu #reminder="matMenu" [overlapTrigger]="false" class="reminder">
+
+<div fxLayout="row" fxLayoutGap="20px"  style="margin-top:200px" width="100px">
+  <button ></button>
+  </div>
+  </mat-menu> -->
+
+
+<div>
+  <mat-menu #reminder="matMenu" >
+      <div class="reminderMain" >
+      <div class="reminderTittle">Reminder:
+      </div>
+      <button (click)='todayReminder()' class="reminderInside">Later Today
+      <span style="margin-left: 57%">8:00</span>
+      </button>
+
+      <button (click)='tomorrowReminder()' class="reminderInside">Tomorrow
+      <span style="margin-left: 60%">8:00</span>
+      </button>
+
+      <button (click)='nextWeek()' class="reminderInside">Weekly
+      <span style="margin-left: 66%">8:00</span>
+      </button> 
+
+       <div >
+      <div (click)='setPickTime()' class="reminderInside" >
+      <mat-icon>access_time</mat-icon>
+      <span> Pick A Date </span> 
+      
+      </div>
+      <div >
+      <mat-form-field class="reminderInside">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [formControl]="dateCalendar">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      </div>
+      </div>
+      
+      </div>
+      </mat-menu> 
+<!-- 
+ <mat-form-field>
+  <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker2" placeholder="Angular forms (w/ deserialization)"
+         [formControl]="serializedDate">
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <input matInput [matDatepicker]="picker3" placeholder="Value binding" [value]="date.value">
+  <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+  <mat-datepicker #picker3></mat-datepicker>
+</mat-form-field>
+</div>  -->
+
+ 
 
   <mat-menu #moreBtn="matMenu">
       <div fxLayout="column">
